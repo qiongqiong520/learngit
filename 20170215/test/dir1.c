@@ -1,7 +1,7 @@
 ///
-/// @file    chdir.c
+/// @file    dir1.c
 /// @author  lemon(haohb13@gmail.com)
-/// @date    2017-02-17 14:45:08
+/// @date    2017-02-17 14:37:38
 ///
 
 #include <unistd.h>
@@ -21,8 +21,10 @@ int main(int argc,char* argv[])
 		perror("chdir");
 		return -1;
 	}
-	printf("path: %s\n",getcwd(NULL,0));
+	printf("path=%s\n",getcwd(NULL,0));
 	return 0;
 }
+
+
 
 

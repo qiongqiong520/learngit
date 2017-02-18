@@ -1,12 +1,13 @@
 ///
-/// @file    chdir.c
+/// @file    rmdir.c
 /// @author  lemon(haohb13@gmail.com)
-/// @date    2017-02-17 14:45:08
+/// @date    2017-02-17 15:49:32
 ///
 
-#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <stdio.h>
-
+#include <sys/dir.h>
 int main(int argc,char* argv[])
 {
 	if(argc!=2)
@@ -15,14 +16,15 @@ int main(int argc,char* argv[])
 		return -1;
 	}
 	int ret;
-	ret=chdir(argv[1]);	
+	ret=rmdir(argv[1]);
 	if(-1==ret)
 	{
-		perror("chdir");
+		perror("rmdir");
 		return -1;
 	}
-	printf("path: %s\n",getcwd(NULL,0));
 	return 0;
 }
+
+
 
 
