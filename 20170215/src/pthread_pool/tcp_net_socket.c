@@ -14,7 +14,7 @@ int tcp_init(const char* ip,int port)
 		ser.sin_port = htons(atoi(argv[2]));
 	ser.sin_addr.s_addr = inet_addr(argv[1]);
 	int ret ;
-	ret =bind(sfd,(struct sockaddr*)&ser,(struct sockaddr));
+	ret =bind(sfd,(struct sockaddr*)&ser,sizeof(ser));
 	if(-1==ret)
 	{
 		perror("socket");
@@ -52,4 +52,8 @@ memset(&ser,0,sizeof(struct sockaddr));
 ser.sin_family = AF_INET;
 ser.sin_port = htons(port);
 ser.sin_addr.s_addr = inet_addr(ip);
-if(connect(sfd,(struct sockaddr*)&ser,)
+if(connect(sfd,(struct sockaddr*)&ser,&addrlen)==-1)
+{
+	perror("connect");
+	return -1;
+}
