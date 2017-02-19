@@ -3,7 +3,6 @@
  /// @author  lemon(haohb13@gmail.com)
  /// @date    2017-02-18 15:35:38
  ///
- 
 #include"factory.h"
 void* threadfunc(void* p)
 {
@@ -17,9 +16,9 @@ void* threadfunc(void* p)
 		{
 			pthread_cond_wait(&pf->cond,&pq->mutex);//一旦队列为空，就睡觉
 		}
-		que->get(pq,&pn);
+		que_get(pq,&pn);
 		pthread_mutex_unlock(&pq->mutex);
-		send_file(pn->new_Fd);
+		send_file(pn->new_fd);
 		free(pn);//不要把free放在锁之间，malloc 和free函数耗时太久
 	}
 }
@@ -34,9 +33,9 @@ int main(int argc,char* argv[])
 		return -1;
 	}
 	fac f;
-	memset(?&f,0,sizeof(f));//开始工厂数据初始化
+	memset(&f,0,sizeof(f));//开始工厂数据初始化
 	f.tnum = atoi(argv[3]);
-	f.capilibity = atoi(argv[4]);
+	f.capibility = atoi(argv[4]);
 	factory_init(&f,threadfunc);//数据初始化
 	factory_start(&f);
 	int sfd;
@@ -46,8 +45,8 @@ int main(int argc,char* argv[])
 		perror("socket");
 		return -1;
 	}
-	set_init(sfd,argv[1],argv[2],);//bindIP地址及端口号
-	listen(sfd,f.cspibility);
+	set_init(sfd,argv[1],argv[2]);//bindIP地址及端口号
+	listen(sfd,f.capibility);
 	int new_fd;
 	while(1)
 	{

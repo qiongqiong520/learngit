@@ -5,13 +5,13 @@
  ///
  
 
-#ifndef _WORK_QUE_H_
-#define _WORK_QUE_H_
+#ifndef __WORK_QUE__
+#define __WORK_QUE__
 #include "normal.h"
 
 //队列节点
 typedef struct list{
-	int new_Fd;
+	int new_fd;
 	struct list *pnext;
 }Node,*pNode;
 

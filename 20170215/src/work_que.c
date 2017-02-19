@@ -5,7 +5,7 @@
  ///
  
 
-#include"normal.h"
+#include"work_que.h"
 
 void que_init(pque p)
 {
@@ -26,7 +26,7 @@ void que_add(pque p,int new_fd)
 		p->ptail =pnew;
 	}
 	(p->size)++;
-	pthread_mutex_unlick(&p->mutex);
+	pthread_mutex_unlock(&p->mutex);
 }
 
 void que_get(pque p,pNode* pn)
