@@ -8,7 +8,7 @@ typedef struct factory{
 	int capibility;//能力
 	int start;
 
-};
+}fac,*pfac;
 
 void factory_init(pfac p,pthfunc entry )
 {
@@ -25,10 +25,10 @@ void factory_start(pfac p)
 	{
 		for(i =0;i<p->tnum;i++)
 		{
-			pthread_ctreat(&p->pth[i],NULL,p->entry,p);
+			pthread_create(&p->pth[i],NULL,p->entry,p);
 		}
 	p->start =1;
 }else{
-printf("factory 
+printf("factory"); 
 
 	}

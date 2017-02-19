@@ -6,10 +6,11 @@ int main()
 	MYSQL *conn;
 	MYSQL_RES *res;
 	MYSQL_ROW row;
-	char* server = "localhos";
-	char* user = "luke";
+	char* server = "localhost";
+	char* user = "root";
 	char* password = "test";
 	char* database = "selete * from user";
+	char* query="select * from user";
 	int t,r;
 	conn = mysql_init(NULL);
 	if(!mysql_real_connect(conn,server,user,password,database,0,NULL,0))
@@ -18,13 +19,13 @@ int main()
 	}else{
 		printf("connected ...\n");
 	}
-	t =mysql_use_result(conn,query);
+	t =mysql_query(conn,query);
 	if(t)
 	{
 		printf("Error making query :%s\n",mysql_error(conn,query));
 	}else{
-		printf(:Query made ...\n");
-		res = mysql_use_result(conn);
+		printf("Query made ...\n");
+		res = sql_use_result(conn,query);
 		if(res)
 		{
 			while((row =mysql_fetch_row(res))!=NULL)

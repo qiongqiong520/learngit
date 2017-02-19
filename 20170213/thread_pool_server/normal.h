@@ -6,7 +6,7 @@
 #include<unistd.h>
 
 #include<stdio.h>
-#include<sydlib.h>
+#include<stdlib.h>
 #include<sys/uio.h>
 #include<sys/socket.h>
 #include<string.h>

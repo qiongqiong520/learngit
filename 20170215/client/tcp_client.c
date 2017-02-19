@@ -6,7 +6,7 @@
 #include<arpa/inet.h>
 #include<string.h>
 #include<sys/types.h>
-
+//实现文件
 int main(int argc,char* argv[])
 {
 	if(argc!=3)

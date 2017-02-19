@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include "factory.h"
 
 void threadfunc(void* p)
 {
