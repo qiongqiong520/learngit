@@ -1,13 +1,15 @@
  ///
- /// @file    mylog.cc
+ /// @file    singleton.cc
  /// @author  lemon(haohb13@gmail.com)
- /// @date    2017-02-21 21:39:30
+ /// @date    2017-02-20 14:40:34
  ///
  
 #include <iostream>
 using std::cout;
 using std::endl;
 
-class Mylog{
-	public:
-		
+int main(void)
+{
+
+	return 0;
+}

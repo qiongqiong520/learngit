@@ -16,25 +16,11 @@ int tcp_init(const char* ip,int port)
 		perror("socket");
 		return -1;
 	}
-	//调用fcntl将sfd，设为非阻塞模式
-	int iflags = fcntl(sfd,F_GETFL,0);
-	if(fcntl(sfd,F_SETFL,O_NONBLOCK|iflags)==-1)
-	{
-		perror("fcntl");
-		exit(-1);
-	}
 	struct sockaddr_in serveraddr;
 	memset(&serveraddr,0,sizeof(serveraddr));
 	serveraddr.sin_family =AF_INET;
 	serveraddr.sin_port = htons(port);
 	serveraddr.sin_addr.s_addr = inet_addr(ip);//或inaddr——any
-	//要已经处于链接状态的socket在调用closesocket后继续该重用socket
-	bool bReuseaddr =TRUE;
-	setsockopt(socket,SOL_SOCKET,SO_REUSEADDR,(const char*)&bReuseaddr,sizeof(bool));
-	//send(),recv()过程中由于网络状况首发不能预期进行，设置首发时限
-//	int nNetTimeout =1000;//1miao
-	//发送时限
-//	setsockopt(socket,SOL_SOCKET,SO_SNDTIMEO,(char*)&nNetTimeout,sizeof(int));
 	if(bind(sfd,(struct sockaddr*)&serveraddr,sizeof(serveraddr))==-1)
 	{
 		perror("bind");
@@ -86,7 +72,6 @@ int tcp_connect(const char* ip,int port)//用于客户端连接
 		close(sfd);
 		exit(-1);
 	}
-//	close(sfd);
 	return sfd;
 }
 

@@ -16,7 +16,6 @@ int main(int argc,char* argv[])
 
 	int sfd =tcp_connect(argv[1],atoi(argv[2]));//或int sfd =tcp_init("192,168.0.164",8888);
 	char buf[512]={0};
-	printf("sfd =%d\n",sfd);
 	if(-1==send(sfd,"hello",6,0))//向sfd服务器端发送数据
 	{
 		perror("send");

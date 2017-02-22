@@ -4,7 +4,9 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<errno.h>
 #include<string.h>
+#include<sys/fcntl.h>
 #include<sys/types.h>
 #include<sys/socket.h>
 #include<netinet/in.h>
@@ -12,14 +14,12 @@
 #include<unistd.h>
 #include<signal.h>
 #include<sys/wait.h>
-#include<errno.h>
-#include<sys/fcntl.h>
-#include<sys/select.h>
-typedef int bool;
-#define TRUE 1
-#define FALSE 0
+#include<pthread.h>
 
-#define MAXCLIENT 10
+#define DEFAULT_SVR_PORT 2828
+#define FILE_MAX_LEN 64
+char filename[FILE_MAX_LEN];
+
 
 extern int tcp_init(const char* ip,int port);
 extern int tcp_accept(int sfd);

@@ -12,14 +12,7 @@
 #include<unistd.h>
 #include<signal.h>
 #include<sys/wait.h>
-#include<errno.h>
-#include<sys/fcntl.h>
-#include<sys/select.h>
-typedef int bool;
-#define TRUE 1
-#define FALSE 0
 
-#define MAXCLIENT 10
 
 extern int tcp_init(const char* ip,int port);
 extern int tcp_accept(int sfd);

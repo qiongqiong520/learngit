@@ -32,6 +32,8 @@ int main(int argc,char* argv[])
 				{
 
 					int cfd = tcp_accept(sfd);
+					printf("-->accept %d\n", cfd);
+					send(cfd, "welcome", 8, 0);
 					FD_SET(cfd,&rdset);
 				}else{
 					bzero(buf,sizeof(buf));
