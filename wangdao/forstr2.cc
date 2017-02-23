@@ -15,6 +15,7 @@ int main(void)
 	using namespace std;
 	cout<<"enter a word"<<endl;
 	string word;
+do{
 	cin>>word;
 
 	char temp;
@@ -26,6 +27,8 @@ int main(void)
 		word[j]=temp;
 	}
 	cout<<word<<"\nDone\n"<<endl;
-	return 0;
+	
+}while(word==NULL);
+return 0;
 }
 //在字符串反转方面，string提供更为简洁的方式
