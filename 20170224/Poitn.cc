@@ -9,6 +9,7 @@ using std::cout;
 using std::endl;
 
 class Point{
+	friend  float distance(const Point & p1,const Point & p2);
 	public:
 		Point(int ix,int iy)
 		:_ix((ix)
@@ -23,11 +24,20 @@ class Point{
 		}
 	private:
 		int _ix;
-		int_iy;
+		int _iy;
 };
 //全局函数或自由函数
-float distancae(const Point & p1,const Point & p2)
+float distance(const Point & p1,const Point & p2)
 {
 	return sqrt((p1._ix -p2._ix)*(p1._ix-p2._ix)+
-		(p1.iy-p2._iy)*(p1_iy-p22._iy));
+		(p1.iy-p2._iy)*(p1_iy-p2._iy));
 }
+
+int main(void)
+{
+	Point pt1(1,2);
+	pt1.print();
+  
+	cout<<"两点距离为："<<distance()<<endl;
+	return 0;
+	}
