@@ -7,10 +7,10 @@
 #include <iostream>
 using std::cout;
 using std::endl;
-
+using std::string;
 class CharArr{
 	public:
-		CharArr(int size)
+		CharArr(int size)//默认构造函数
 			:_len(size)
 			 ,_pstr(new char[_len])
 			{
@@ -23,6 +23,7 @@ class CharArr{
 		}
 		char & operator [](int idx)
 		{
+			cout<<endl<<"char & operator[] (int)"<<endl;
 			static char ch='\0';
 			if(idx>=0&&idx<_len)
 				return _pstr[idx];
@@ -30,38 +31,44 @@ class CharArr{
 			{
 				cout<<"下标越界"<<endl;
 				return ch;
+	
 			}
-	void display()
+		}
+#if 0
+	 void display()
 	{
 		for(int idx =0;idx!=0_len;++idx)
 		{
 			cout<<_pstr[idx];
 		}
 	}
+#endif
+
 	private:
 		int _len;
 		char * _pstr;
 };
-
-int test(void)
+int main(void)
 {
+	//把string当成插入类型的容器
+string s1="hello world";
 	const char * pstr="Hello ,world";
-	int len=strlen(pstr);
 	CharArr ca(10);
 
+	int len=strlen(pstr);
 	for(int idx =0;idx!=len;++idx)
 	{
 		ca[idx]=pstr[idx];
 	}
-	return 0;
-}
+	for(int idx =0;idx!=len;++idx)
+	{
+		cout<<ca[idx];
+	}
 
-int main(void)
-{
-	//把string当成插入类型的容器
-	string s1="hello world";
-
-	for(int idx =0;idx!=size;)
+	for(int idx =0;idx!=s1.size();++idx)
 	{
 		cout<<s1[idx];
 	}
+	cout<<endl;
+	return 0;
+}

@@ -7,7 +7,7 @@
 #include <iostream>
 using std::cout;
 using std::endl;
-
+//成员函数运算符重载
 class Complex{
 	public:
 		friend Complex（const Complex & lhs,const Complex & rhs);
@@ -19,19 +19,19 @@ class Complex{
 	}
 		void display()
 		{
-			cout<<_real<<"+"<<_imag<<endl;
+			cout<<_real<<"+"<<_imag<<i<<endl;
 		}
 		//成员函数重载加法运算
 Complex operator+(const Complex & rhs)
 {
 	return Complex(this->_real +rhs._real,
-			this->_imag+rhs._iamg);
+			this->_imag+rhs._imag);
 }
 	private:
 		double _real;
 		double _imag;
 
-};
+}
 #if 0
 //不能对内置类型的操作符进行重载
 int operator +(int a,int b){
