@@ -19,4 +19,8 @@ void print(int num)
 int main(void)
 {
 	vector<int> vecInt ={1,2,3,4,5,6};
-	for_each
+	for_each(vecInt.begin(),vecInt.end(),print);
+	cout<<endl;
+
+	return 0;
+}
