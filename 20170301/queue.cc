@@ -1,6 +1,6 @@
  /// @date    2017-03-02 20:03:58
  ///
-#include<stdio.h>
+ 
 #include <iostream>
 using namespace std;
 
@@ -69,11 +69,11 @@ void CStack<T>::Pop(void)
 }
 int  main(void)
 {
-   	CStack<int> s1;//可以自己更换
+  	CStack<int> s1;//可以自己更换
 	int i;
 	do
 	{
-  		cout<<"\t=====================\n";
+ 		cout<<"\t=====================\n";
 		cout<<"\t****顺序栈类模板*****\n";
 		cout<<"\t    1.入栈           \n";
 		cout<<"\t    2.出栈           \n";
@@ -82,32 +82,32 @@ int  main(void)
 		cout<<"\t*********************\n";
 		cout<<"\t=====================\n";
 		do{
-	 		cout<<"\tplease input your operator"<<endl;
+			cout<<"\tplease input your operator"<<endl;
 			cin>>i;
-			//system("cls");
+			system("cls");
 		}while(i!=1&&i!=2&&i!=3&&i!=0);
 		switch(i)
 		{
-	 		case 1:
-	 			s1.Push();
+			case 1:
+				s1.Push();
 				system("pause");
-			//	system("cls");
+				system("cls");
 				break;
 			case 2:
-		 		s1.Pop();
+				s1.Pop();
 				system("pause");
-			//	system("cls");
+				system("cls");
 				break;
 			case 3:
 				if(-1 ==s1.getTop())
 				{
 					system("pause");
-					//system("cls");
+					system("cls");
 					break;
 				}else
-		 			cout<<"栈顶元素为:"<<s1.getTop()<<endl;
+					cout<<"栈顶元素为:"<<s1.getTop()<<endl;
 					system("pause");
-				//	system("cls");
+					system("cls");
 					break;
 		}
 	}while(i!=0);
