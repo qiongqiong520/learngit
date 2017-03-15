@@ -5,7 +5,7 @@
  ///
  
 
-#include"normal.h"
+#include"func.h"
 
 void send_file(int new_fd)
 {

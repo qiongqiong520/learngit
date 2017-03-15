@@ -60,7 +60,7 @@ int main(void)
 		s1.print();
 		s1.print();
 		
-		String s2="hello"//位于文字常量区
+		String s2="hello";//位于文字常量区
 		s2.print();
 		
 		String s3 =s2;//调用复制构造函数

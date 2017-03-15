@@ -10,14 +10,14 @@ using std::endl;
 
 class Complex{
 	public:
-		friend Complex(const Complex & lhs,const Complex & rhs);
+		//friend Complex(const Complex & lhs,const Complex & rhs);
 		Complex(double real,double imag)
 			:_real(real)
 				,_imag(imag)
 	{
 		cout<<"Complex(double,double)"<<endl;
 	}
-		//复合复制运算符最好一成员函数进行重载
+		//复合复制运算符最好以成员函数进行重载+=
 		Complex & operator +=(const Complex & rhs)
 		{
 			this->_real += rhs._real;
@@ -29,7 +29,7 @@ class Complex{
 		{//保存变化之后的值,&
 			++this->_real;
 			++this->_imag;
-			return *this;
+			return *this;//如果不佳引用不代表参数是一个标示位，只是与前置++做一个区分
 		}
 
 		//后置++,参数中的int不代表参数，只是与前置++做一个区分，只是一个标志位
@@ -87,9 +87,10 @@ int main(void)
 
 	a +=b;//a=a+b
 	++a;//表达式值加1.a值也加一
-	a++;//后置加加，表达式值为a变化之前的值，之后再做a+1，操作
-		cout<<"++a"<<++a<<endl;
-	cout<<"a++="<<a++<<endl;
+	a++;//后置++，表达式值为a变化之前的值，之后再做a+1，操作
+	
+	cout<<"++a= "<<++a<<endl;//后置++，表达式的值是a变化之前的值，a的值加1
+	cout<<"a++= "<<a++<<endl;
 	Complex c1(1,2);
 	c1.display();
 
@@ -99,9 +100,11 @@ int main(void)
 	Complex c3=c1+c2;
 	c3.display();
 
+	cout<<"Complex 前置++"<<endl;
 	(++c1).display();
 	c1.display();
 
+	cout<<"complex后置++"<<endl;
 	(c1++).display();
 	c1.display();
 

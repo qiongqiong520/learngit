@@ -10,19 +10,19 @@ using std::endl;
 
 class Complex{
 	public:
-		friend Complex（const Complex & lhs,const Complex & rhs);
+	//	friend Complex(const Complex & lhs,const Complex & rhs);
 		Complex(double real,double imag)
 			:_real(real)
 				,_imag(imag)
 	{
 		cout<<"Complex(double,double)"<<endl;
 	}
-		//符合复制运算符最好一成员函数进行重载
+		//符合复制运算符最好以成员函数进行重载
 		Complex & operator +=(const Complex & rhs)
 		{
 			this->_real += rhs._real;
-			this->_iamg +=rhs._imag;
-			rerturn *this;
+			this->_imag +=rhs._imag;
+			return *this;
 		}
 		void display()
 		{

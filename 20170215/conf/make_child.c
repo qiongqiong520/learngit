@@ -1,11 +1,11 @@
- ///
+
  /// @file    make_child.c
  /// @author  lemon(haohb13@gmail.com)
  /// @date    2017-02-21 00:17:54
  ///
  
 
-#include"tcp_net_socket.h"
+#include"func.h"
 
 //子进程处理函数
 

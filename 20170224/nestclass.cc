@@ -10,8 +10,8 @@ using std::endl;
 
 class Line
 {
-	//public:
-	private:
+	public:
+	//private:
 		//换成私有类型，只能在内部使用，跟外部没有关系
 		class Point{
 			public:
@@ -26,6 +26,8 @@ class Line
 				int _iy;
 		};
 	public:
+		Line(int x1,int y1,int x2,int y2);
+		~Line();
 		LineImpl(int x1,int y1,int x2,int y2);
 		void printLine();
 	private:
@@ -52,7 +54,7 @@ void Line::printLine()
 	cout<<"--->"<<endl;
 	_p2.printLine();
 }
-	Line::Line(int x1,int y1,int x2,int y2)
+	Line::LineImpl(int x1,int y1,int x2,int y2)
 :_pImpl(new LineImpl(x1,y1,x2,y2))
 {
 	cout<<"Line::LineImpl(int,int,int,int,int)"<<endl;

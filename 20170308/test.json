@@ -1,0 +1,22 @@
+{
+	"BAT":
+	[
+	 	{
+			"title":"百度",
+			"url":"www.baidu.com",
+			"abstract":"搜索"
+		},
+		
+		{
+			"title":"百度",
+			"url":"www.baidu.com",
+			"abstract":"搜索"
+		},
+
+		{
+			"title":"百度",
+			"url":"www.baidu.com",
+			"abstract":"搜索"
+		}
+	]
+}

@@ -31,8 +31,8 @@ int main(void)
 
 	//在multimap或multiset中查找元素
 	
-	multimap<string> search_item("Alain de Bottom");//要查找的元素
-	multimap<string> authors;
+	string search_item("Alain de Bottom");//要查找的元素
+	string authors;
 	auto entries =authors.count(search_item);//元素数量
 	auto iter = authors.find(search_item);//词作者的第一本书
 
@@ -43,9 +43,6 @@ int main(void)
 		++iter;//前进到下一本书
 		--entries;//记录已经打印了多少本书
 	}
-
-	
-
 
 	//关联容器访问元素
 	set<int> iset={0,1,2,3,4,5,6,7,8,9};
