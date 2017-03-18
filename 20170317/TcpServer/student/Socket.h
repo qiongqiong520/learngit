@@ -1,5 +1,5 @@
-#ifndef WD_SOCKET_H
-#define WD_SOCKET_H
+#ifndef SOCKET_H
+#define SOCKET_H
 
 #include "Noncopyable.h"
 #include "InetAddress.h"
@@ -10,11 +10,9 @@ namespace wd
 class Socket : private Noncopyable
 {
 public:
-    explicit Socket(int sockfd);
-    Socket();
+     explicit Socket(int sockfd);
     ~Socket();
 
-	void ready(const InetAddress & inetAddr);
 
     int fd() const { return sockfd_; }
 	  void bindAddress(const InetAddress &addr);
@@ -39,4 +37,4 @@ private:
 
 }//end namespace wd
 
-#endif //WD_SOCKET_H
+#endif //SOCKET_H_

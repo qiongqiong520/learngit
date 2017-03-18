@@ -5,7 +5,7 @@
  ///
  
 #include "TcpConnection.h"
-
+#include<stdlib.h>
 namespace wd
 {
  	TcpConnection::TcpConnection(int sockfd)
@@ -30,7 +30,7 @@ namespace wd
 
 	void TcpConnection::handleConnectCallback()
 	{
-  		if(onConnetCallback_)
+  		if(onConnectCallback_)
 			onConnectCallback_(shared_from_this());
 	}
 

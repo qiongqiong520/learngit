@@ -28,11 +28,11 @@ namespace wd
 
 			//c++11 move semantices
 			void setConnectCallback(TcpConnectionCallback cb)
-			{onConnectCallback_ =std::move(cb);}
+			{ onConnectCallback_ =std::move(cb);}
 			void setMessageCallback(TcpConnectionCallback cb)
-			{return onMessageCallback_=std::move(cb);}
+			{ onMessageCallback_=std::move(cb);}
 			void setCloseCallback(TcpConnectionCallback cb)
-			{return onCloseCallback_=std::move(cb):}
+			{ onCloseCallback_=std::move(cb);}
 
 			void handleConnectCallback();
 			void handleMessageCallback();

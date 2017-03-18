@@ -10,7 +10,7 @@
 
 class Noncopyable//禁用值语义
 {
-publlic:
+public:
 	Noncopyable(){}
 	~Noncopyable(){}
 private:

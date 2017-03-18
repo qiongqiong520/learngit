@@ -21,17 +21,6 @@ Socket::Socket(int sockfd)
 	:sockfd_(sockfd)
 {
 }
-    
-
-void Socket::ready(const InetAddress & inetAddr)
-{
- 	 setReuseAddr(true);
-	setReusePort(true);
-	setKeepAlive(false);
-	setTcpNoDelay(false);
-	bindAddress(inetAddr);
-	listen();
-}
 
  Socket::~Socket()
 {
@@ -82,9 +71,10 @@ void Socket::setTcpNoDelay(bool on)
 	if(::setsockopt(sockfd_,
 				IPPROTO_TCP,
 				TCP_NODELAY,
-				&optval,static_cast<socklen_t>(sizeof optval))==-1)
+				&optval,
+				static_cast<socklen_t>(sizeof optval))==-1)
 	{
-		fprintf(stderr,"setTcpNoDelay error\n");
+	 	fprintf(stderr,"setTcpNoDelay error\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -92,12 +82,12 @@ void Socket::setReuseAddr(bool on)
 {
     int optval = on ? 1 : 0;
     if(::setsockopt(sockfd_, 
-                 SOL_SOCKET, 
+                  SOL_SOCKET, 
                  SO_REUSEADDR,
                  &optval, 
                  static_cast<socklen_t>(sizeof optval)) == -1)
     {
-        fprintf(stderr, "setReuseAddr error\n");
+         fprintf(stderr, "setReuseAddr error\n");
         exit(EXIT_FAILURE);
     }
 }
@@ -105,9 +95,12 @@ void Socket::setReuseAddr(bool on)
 void Socket::setReusePort(bool on)
 {
 #ifdef SO_REUSEPORT//该内容被定义则执行之后的内容，否则执行else的内容
-     int optval = on ? 1 : 0;
-    int ret = ::setsockopt(sockfd_, SOL_SOCKET, SO_REUSEPORT,
-                         &optval, static_cast<socklen_t>(sizeof optval));
+      int optval = on ? 1 : 0;
+    int ret = ::setsockopt(sockfd_, 
+			SOL_SOCKET, 
+			SO_REUSEPORT,
+             &optval, 
+			 static_cast<socklen_t>(sizeof optval));
     if (ret < 0)
     {
         fprintf(stderr, "setReusePort error\n");
