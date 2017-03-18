@@ -32,7 +32,6 @@ namespace wd
 		{
 	 		Thread * p= new WorkThread(*this);
 			shared_ptr<Thread> sp(p);
-			sp->start();
 			_threads.push_back(sp);
 			sp->start();
 		}
@@ -73,7 +72,7 @@ namespace wd
 		{
 			Task * ptask =getTask();//当任务队列为空时，每个线程都阻塞在gettask方法上
 			if(ptask)
-				ptask->execute();
+				ptask->excute();
 		}
 	}
 }//end of namespace wd

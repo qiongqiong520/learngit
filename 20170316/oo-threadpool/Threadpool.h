@@ -25,7 +25,7 @@ namespace wd
 		friend class WorkerThread;
 		public:
 			Threadpool(size_t threadnum,size_t bufSize);
-			~Thread();
+			~Threadpool();
 
 			void start();
 			void stop();
