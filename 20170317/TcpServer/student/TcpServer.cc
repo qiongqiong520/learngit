@@ -27,4 +27,13 @@ namespace wd
 		 ,sockfd_(createSockerFd())
 		 ,poller_(sockfd_.fd())
 	{
+		sockfd_.setTcpNoDelay(false);
+		sockfd_.setReusePort(true);
+		sockfd_.setReuseAddr(true);
+		sockfd_.setKeepAlive(false);
+
+		sockfd_.bindAddress(_addr);
+		sockfd_.listen();
+
 	}
+}

@@ -11,13 +11,14 @@
 #include"EpollPoller.h"
 #include"Socket.h"
 #include"InetAddress.h"
+#include<string>
 
 using std::string;
 namespace wd
 {
-	class TcpServer:Noncopyable
+ 	class TcpServer:Noncopyable
 	{
-		public:
+	 	public:
 		typedef EpollPoller::EpollCallback TcpServerCallback;
 
 		TcpServer(const string &ip,unsigned int port);

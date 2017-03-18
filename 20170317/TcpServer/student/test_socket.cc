@@ -1,34 +1,38 @@
 
-#include "InetAddress.h"
-#include "Socket.h"
-#include "SocketIO.h"
+#include "TcpServer.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
+void onConnection(const wd::TcpConnectionPtr &conn)
+{
+	printf("%s\n",conn->toString().c_str());
+	conn->send("hello,welcome to chat Server.\r\n");
+}
+
+void onMessage(const wd::TcpConnectionPtr &conn)
+{
+	std::string s(conn->receive());
+	conn->send(s);
+}
+
+void onClose(const wd::TcpConnectionPtr &conn)
+{
+	printf("%s close\n",conn->toString().c_str());
+}
+
 int main(int argc, char const *argv[])
 {
 
-	wd::InetAddress addr("192.168.49.133", 9999);
-	wd::Socket sock;
-	sock.ready(addr);
+	 wd::TcpServer server("192.168.137.128",9999);
 
-    int peerfd = sock.accept();
+	server.setConnectCallback(&onConnection);
+	server.setMessageCallback(&onMessage);
+	server.setCloseCallback(&onClose);
 
-	wd::SocketIO sio(peerfd);
-    char recvbuf[1024] = {0};
-    while(1)
-    {
-		int ret = sio.readLine(recvbuf, sizeof(recvbuf));
-		if(ret != 0){
-			printf("receive msg : %s", recvbuf);
-			sio.writen(recvbuf, strlen(recvbuf));
-		}
-		else{
-			break;
-		}
-    }
-	sock.shutdownWrite();
-    return 0;
+	server.start();
+
+	return 0;
 }
+    

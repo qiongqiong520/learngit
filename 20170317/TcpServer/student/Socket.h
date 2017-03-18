@@ -11,6 +11,7 @@ class Socket : private Noncopyable
 {
 public:
      explicit Socket(int sockfd);
+
     ~Socket();
 
 
