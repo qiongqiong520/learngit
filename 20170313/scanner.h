@@ -32,10 +32,10 @@ class Scanner
 		EToken Token() const;
 	private:
 	   	void SkipWhite();
-		const std::string _buf;
-		unsigned int _curPos;
-		EToken _token;
-		double _number;
+		const std::string buf_;
+		unsigned int curPos_;
+		EToken token_;
+		double number_;
 };
 #endif //_SCANNER_H_
 

@@ -4,80 +4,77 @@
  /// @date    2017-03-13 22:22:17
  ///
 #include"scanner.h"
-
+#include<stdlib.h>
 #include <iostream>
 using std::cout;
 using std::endl;
 using std::string;
 
-Scanner::Scanner(const string& buf):_buf(buf),_curPos(0)
+Scanner::Scanner(const string& buf):buf_(buf),curPos_(0)
 {
 	Accept();
 }
 
 double Scanner::Number() const
 {
-	return _number;
+	return number_;
 }
 
 EToken Scanner::Token() const
 {
-	return _token;
+	return token_;
 }
 
 void Scanner::SkipWhite()
 {
-	while(isspace(_buf[_curPos]))
-		++_curPos;
+	while(isspace(buf_[curPos_]))
+		++curPos_;
 }
 
 void Scanner::Accept()
 {
 	 SkipWhite();
-	switch(_buf[_curPos])
+	switch(buf_[curPos_])
 	{
-	 	case'+':
-			 _token=TOKEN_PLUS;
-				++_curPos;
+	  	case'+':
+	 		 token_=TOKEN_PLUS;
+				++curPos_;
 			break;
 		case'-':
-		 	_token=TOKEN_MINUS;
-			++_curPos;
+		 	token_=TOKEN_MINUS;
+			++curPos_;
 			break;
 		case'*':
-	 		_token=TOKEN_MULTIPLY;
-			++_curPos;
+	 		token_=TOKEN_MULTIPLY;
+			++curPos_;
 			break;
 		case'/':
-			_token=TOKEN_DIVIDE;
-			++_curPos;
+			token_=TOKEN_DIVIDE;
+			++curPos_;
 			break;
 		case'(':
-			_token=TOKEN_LPAENTHESIS;
-			++_curPos;
+			token_=TOKEN_LPAENTHESIS;
+			++curPos_;
 			break;
 		case')':
-			_token=TOKEN_RPARENTHESIS;
-			++_curPos;
+			token_=TOKEN_RPARENTHESIS;
+			++curPos_;
 			break;
 		case'0':case'1':case'2':case'3':case'4':
 		case'5':case'6':case'7':case'8':case'9':
 		case'.':
-			 _token=TOKEN_NUMBER;
+			 token_=TOKEN_NUMBER;
 			char *p;
-			_number = strtod(&_buf[_curPos],&p);
-			_curPos = p-&_buf[0];
+			number_ = strtod(&buf_[curPos_],&p);
+			curPos_ = p-&buf_[0];
 			break;
 		case'\0':case'\n':case'\r':case EOF:
-							   _token=TOKEN_ERROR;
-							   break;
+		 	   token_=TOKEN_ERROR;
+			   break;
 		default:
-							   _token = TOKEN_ERROR;
-							   break;
+	 	   token_ = TOKEN_ERROR;
+		   break;
 	}
 }
 
-int main(void)
-{
-	return 0;
-}
+

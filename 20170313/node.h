@@ -1,93 +1,143 @@
  ///
- /// @file    node.h
+ /// @file    Noncopyable.h
  /// @author  lemon(haohb13@gmail.com)
- /// @date    2017-03-13 21:34:31
+ /// @date    2017-03-19 14:41:15
  ///
  
-#ifndef _NODE_H_
-#define _NODE_H_
-
-class Noncopyvable
+#ifndef NONCOPYABLE_H_
+#define NONCOPYABLE_H_
+#include<vector>
+class Noncopyable
 {
 	protected:
-		Noncopyvable(){}
-		~Noncopyvable(){}
+		Noncopyable(){}
+		~Noncopyable(){}
+
 	private:
-		Noncopyvable(const Noncopyvable &);
-		Noncopyvable &operator =(const Noncopyvable &);
+		Noncopyable(const Noncopyable &);
+		Noncopyable & operator=(const Noncopyable &);
 };
-class Node:private Noncopyvable
+
+class Node:private Noncopyable
 {
-  	public:
-  		virtual double Calc() const =0;
+	public :
+		virtual double Calc() const =0;
 		virtual ~Node(){}
 };
 
 class NumberNode:public Node
 {
-  	public:
- 		NumberNode(double number):_number(number){}
+	public:
+		NumberNode(double number):number_(number){}
 		double Calc() const;
 	private:
-		 double const _number;
+		const double number_;
 };
 
-class BinaryNode:public Node
+class BinaryNode: public Node
 {
-  	public:
-		BinaryNode(Node* left,Node* right):_left(left),_right(right)
-	{}
+	public: 
+		BinaryNode(Node * left,Node * right)
+			:left_(left),right_(right){}
 		~BinaryNode();
-	private:
- 		Node* const _left;
-		Node* const _right;
+	protected:
+		 Node* const left_;
+		Node* const right_;
 };
 
-class UnaryNode :public Node
+class UnaryNode:public Node
 {
- 	public:
- 		UnaryNode(Node* child):_child(child)
-		{}
+	public:
+		UnaryNode(Node* child)
+			:child_(child){}
 		~UnaryNode();
-protected:
- 		Node* const _child;
-	};
+	protected:
+		Node* const child_;
 
+};
 class AddNode:public BinaryNode
 {
- 	public:
- 		AddNode(Node* left,Node* right):BinaryNode(left,right){}
-		double Calc() const;
+	public:
+		AddNode(Node* left,Node* right)
+			:BinaryNode(left,right){}
+		double Calc()const;
 };
-
 class SubNode:public BinaryNode
 {
-	 public:
- 		SubNode(Node* left,Node* right):BinaryNode(left,right){}
+ 	public:
+ 		SubNode(Node* left,Node* right)
+			:BinaryNode(left,right){}
+		double Calc()const;
+};
+#if 0
+class MultiplyNode:public BinaryNode
+{
+ 	public:
+	 	MultiplyNode(Node* left,Node* right)
+			:BinaryNode(left,right){}
 		double Calc() const;
+};
+#endif
+
+class DivideNode:public BinaryNode
+{
+	public:
+		DivideNode(Node* left,Node* right)
+			:BinaryNode(left,right){}
+		double Calc()const;
+};
+
+class UMinusNode:public UnaryNode
+{
+ 	public:
+ 		UMinusNode(Node* child)
+			:UnaryNode(child ){}
+		double Calc()const;
 };
 
 class MultiplyNode:public BinaryNode
 {
 	public:
-		MultiplyNode(Node* left,Node* right):BinaryNode(left,right){}
-		double Calc() const;
+	 	MultiplyNode(Node* left,Node* right)
+			:BinaryNode(left,right){}
+		double Calc()const;
 };
 
-class DivideNode:public BinaryNode
+class MultipleNode:public Node
 {
 	public:
-		DivideNode(Node* left,Node* right):BinaryNode(left,right){}
-		double Calc() const;
+		MultipleNode(Node* node)
+		{
+			AppendChild(node,true);
+		}
+		void AppendChild(Node* node,bool positive)
+		{
+			childs_.push_back(node);
+			positives_.push_back(positive);
+		}
+		~MultipleNode();
+	protected:
+	std::vector<Node*> childs_;
+	std::vector<bool> positives_;
 };
 
-class UMinusNode:public UnaryNode
+
+
+class SumNode: public MultipleNode
 {
 	public:
-		UMinusNode(Node* child)
-			:UnaryNode(child){}
-		double Calc() const;
+		SumNode(Node* node)
+			:MultipleNode(node){}
+		double Calc()const;
+};
+class ProductNode:public MultipleNode
+{
+	public: 
+		ProductNode(Node* node)
+			:MultipleNode(node){}
+		double Calc()const;
 };
 
 
-#endif//_NODE_H_
+#endif//Noncopyable_H_
+
