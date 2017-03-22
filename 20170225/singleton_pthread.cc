@@ -18,36 +18,40 @@ class Singleton
 		static Singleton * getInstance()
 		{
 			pthread_once(&_once ,init);
-			return _pInstacne;
+			return _pInstance;
 		}
-		static void destory()
+		static void destroy()
 		{
-			if(_pInstance)
-			
+		 	if(_pInstance)
+				delete _pInstance;
 		}
 
 		static void init()
 		{
 			_pInstance =new Singleton;
 		//保证进程退出时进程会被执行一次
-			atexit(destory);
+			atexit(destroy);
 		}
-		static void destory()
-		{
-
-		}
-	~Singleton()
+	void print()
 	{
-		delete  _pInstance;
+		cout<<"Singleton::print()"<<endl;
 	}
 	private:
+	Singleton(){
+		cout<<"Singleton()"<<endl;
+	}
+	~Singleton()
+	{
+		cout<<"~Singleton()"<<endl;
+	}
+		private:
 		static Singleton * _pInstance;
 		static pthread_once_t _once;
 };
 Singleton * Singleton::_pInstance = NULL;
-Singleton::AutoRelease Singleton::_ar;
+pthread_once_t Singleton::_once =PTHREAD_ONCE_INIT;
 int main(void){
-	Singleton::Auto
+	Singleton::getInstance()->print();
 	return 0;
 }
 
