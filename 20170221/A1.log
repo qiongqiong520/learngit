@@ -30,3 +30,6 @@
 1487729358 WARN sub1 : unfolding proteced shield
 1487729358 INFO sub1 : Solar pannel arwe shield
 1487729358 INFO sub1 : all hatches closed
+1490327413 DEBUG sub1 : Received storm warning
+1490327413 INFO sub1 : closing storm warning
+1490327413 INFO sub1 : All hatches closed

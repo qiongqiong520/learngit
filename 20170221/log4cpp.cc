@@ -6,6 +6,7 @@
  
 #include <iostream>
 #include<sstream>//字符串的输出流
+
 #include<log4cpp/Category.hh>
 #include<log4cpp/PatternLayout.hh>
 #include<log4cpp/FileAppender.hh>
