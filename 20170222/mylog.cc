@@ -9,43 +9,43 @@
 #include<log4cpp/OstreamAppender.hh>
 #include<log4cpp/FileAppender.hh>
 #include<log4cpp/PatternLayout.hh>
-#include<log4cpp/priority.hh>
+#include<log4cpp/Priority.hh>
 
-Mylog * Mylog::_pInstance =NUll;
+Mylog * Mylog::_pInstance =NULL;
 
 Mylog * Mylog::getInstance()
 {
 	if(_pInstance ==NULL)
 	{
-		_pInstance =New Mylog;
+		_pInstance =new Mylog;
 	}
 		return  _pInstance;
 }
 
 Mylog::Mylog()
-:_cat(Category::getroot().getInstance("mycat"))
+:_cat(log4cpp::Category::getRoot().getInstance("mycat"))
 {
-	Patternlayout * ptn1 =new Patternlayout();
-	ptn1->ssetConversionPattern("%d:%c %p %x:%m %n");
+	log4cpp::PatternLayout * ptn1 =new log4cpp::PatternLayout();
+	ptn1->setConversionPattern("%d:%c %p %x:%m %n");
 	
-	Patternlayout *ptn2 = new PatternLayout();
-	ptn2->ssetConversionPattern("%d:%c %p %x:%m %n");
+	log4cpp::Patternlayout *ptn2 = new log4cpp::PatternLayout();
+	ptn2->setConversionPattern("%d:%c %p %x:%m %n");
 	
-	OstreamAppender * osApp = new OstreamAppender("osApp",&cout);
+	log4cpp::OstreamAppender * osApp = new log4cpp::OstreamAppender("osApp",&cout);
 	osApp->setLayout(ptn1);
 
-	FileAppender * fileApp = new FileAppender("fileApp","wangdao.log");
-	fileApp->SestAppender(fileApp);
+	log4cpp::FileAppender * fileApp = new log4cpp::FileAppender("fileApp","wangdao.log");
+	fileApp->setLayout(fileApp);
 
 	_cat.addAppender(osApp);
 	_cat.addAppender(fileApp);
 
-	_cat.setPriority(Priority::DEBUG);
+	_cat.setPriority(log4cpp::Priority::DEBUG);
 }
 Myloy::~Mylog()
 {
 }
-void Mylog::warn(const string& msg)
+void Mylog::warn(const std::string& msg)
 {
 	_cat.warn(msg.c_str());
 }

@@ -4,17 +4,18 @@
  /// @date    2017-02-22 23:30:18
  ///
  
-#ifdef __WANGDAO_MYLOG_H__
+#ifndef __WANGDAO_MYLOG_H__
 #define __WANGDAO_MYLOG_H__
 
 #include <iostream>
 #include<string>
 #include<log4cpp/Category.hh>
+#include<log4cpp/OstreamAppender.hh>
+
 using std::cout;
 using std::endl;
 using std::string;
 using std::log4cpp;
-
 class Mylog
 {
 	static Mylog * getInstance();
@@ -31,14 +32,14 @@ class Mylog
 
 	private:
 	static Mylog * _pInstance;
-	Category & _cat;
+	log4cpp::Category & _cat;
 };
 
 inline string int2str(int num)
 {
-	std::ostingstream oss;
+	std::ostringstream oss;
 	oss<<msg;
-	return oss.msg;
+	return oss;
 }
 #define postfix[msg]\
 	string[msg].append("[").append(__FILE__)\
