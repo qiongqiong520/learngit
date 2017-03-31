@@ -17,7 +17,9 @@ int main(void)
 		{
 			cin>>a>>b>>c;
 			if(a+b>c)
-				cout<<"Case #"<<i+1<<":false"<<endl;
+				cout<<"Case #"<<i+1<<":true"<<endl;
+			else
+				cout<<"case #"<<i+1<<":false"<<endl;
 		}
 	}
 	return 0;
