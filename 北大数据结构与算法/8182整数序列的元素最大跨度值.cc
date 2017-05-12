@@ -5,5 +5,26 @@
  ///
  
 #include <iostream>
+#include<cstdio>
+using std::cin;
 using std::cout;
 using std::endl;
+
+int main()
+{
+	int n,x,minV,maxV;
+	cin>>n>>x;
+	minV=maxV=x;
+	while(--n)
+	{
+		cin>>x;
+		if(x<minV)
+			minV=x;
+		if(x>maxV)
+			maxV = x;
+		if(x>maxV)
+			maxV=x;
+	}
+	cout<<maxV-minV;
+	return 0;
+}
