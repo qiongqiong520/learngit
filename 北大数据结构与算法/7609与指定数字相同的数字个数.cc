@@ -5,5 +5,24 @@
  ///
  
 #include <iostream>
+#include<cstdio>
+using std::cin;
 using std::cout;
 using std::endl;
+
+int a[10];
+int main()
+{
+	int N;
+	cin>>N;
+	for(int i=0;i<N;++i)
+		cin>>a[i];
+	int M;
+	cin>>M;
+	int num=0;
+	for(int i=0;i<N;++i)
+		if(a[i]==M)
+			++num;
+	cout<<num;
+	return 0;
+}
