@@ -1,7 +1,7 @@
  ///
- /// @file    9485左边i为取反.cc
+ /// @file    10366指针练习ForEach.cc
  /// @author  lemon(haohb13@gmail.com)
- /// @date    2017-05-15 17:46:11
+ /// @date    2017-05-20 16:53:35
  ///
  
 #include <iostream>

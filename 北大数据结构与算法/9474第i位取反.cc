@@ -1,7 +1,7 @@
  ///
- /// @file    7592求最大公约数.cc
+ /// @file    9474第i位取反.cc
  /// @author  lemon(haohb13@gmail.com)
- /// @date    2017-05-15 17:44:30
+ /// @date    2017-05-20 15:53:12
  ///
  
 #include <iostream>
