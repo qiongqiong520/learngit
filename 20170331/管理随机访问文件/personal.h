@@ -3,10 +3,10 @@
  /// @author  lemon(haohb13@gmail.com)
  /// @date    2017-03-31 22:29:21
  ///
-#ifndef PERSONAL
-#define PERSONAL
+#ifndef PERSONAL_H
+#define PERSONAL_H
 
-#include <fstream>
+#include<fstream>
 #include<cstring>
 using namespace std;
 
@@ -24,7 +24,7 @@ class Personal{
 			return strncmp(pr.SSN,SSN,9)==0;
 		}
 	protected:
-		const int namelen ,citylen;
+	 	const int namelen ,citylen;
 		char SSN[10],*name,*city;
 		int year;
 		long salary;
