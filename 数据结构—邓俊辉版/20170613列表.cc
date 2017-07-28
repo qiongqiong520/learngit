@@ -115,3 +115,49 @@ void List<T>::insertionSort(ListNodePosi(T) p,int n){//valid
 		p=p->succ;remove(p->pred);//转向下一节点
 	}
 }
+//3.20列表的选择排序
+
+template<typename T>//列表的选择排序算法：对起始位置的n个位置排序
+void List<T>::selectionSort(ListNodePosi(T) p,int n){
+	ListNodePosi(T) head=p->pred;ListNodePosi(T)tail=p;
+	for(int i=0;i<n;i++)tail=tail->succ;//待排序区间为(head,tail);
+	while(1<n){//至少还剩两节之前，在待排序区间内
+		ListNodePosi(T)max=selectMax(head->succ,n);//找出最大者
+		insertB(tail,remove(max));//将其移至无序区间末尾（作为有序区间新的首元素)
+		tail=tail->pred;n--;
+	}
+}
+//3.21列表最大节点定位
+template<typename T>
+ListNodePosi(T) List<T>::selectMax(ListNodePosi(T) p,int n){
+	ListNodePosi(T) max=0p;//最大者暂定为首节点p
+	for(ListNodePosi(T) cur=p;1<n;n--)//从首节点出发，将后续节点逐一与max比较
+		if(!lt((cur=cur->succ)->data,max-data))//若当前元素不小于max，则
+			max=cur;//更新最大元素位置
+	return max;//返回最大节点位置
+}
+
+//3.22有序列表的二路归并	
+template<typename T>//有序列表归并：当前列表中自p起的n个元素，与列表中q起de吗个元素归并
+void List<T>::merge(ListNodePosi(T) & p,int n,List<T>& L,ListNodePosi(T)q,int m){
+	//注意归并排序类之前的场合，有可能this=L&&rank(p)+n=rank(q)
+	ListNodePosi(T)pp=p->pred;//借助前驱，一边返回之前
+	while(0<m)//在q尚未一处区间之前
+		if((0<n)&&(p->data<=q->data))//若p人在区间内且v(p)<=v(q)
+		{if(q==(p=p->succ))break;n--;}//p归入合并的列表,且替换为其直接后继
+		else//若p已超出右界或v(q)<v(p).则
+		{insertB(p,L.remove((q=q->succ)->pred));m--;}//将q转置p之前
+	p=pp->succ;//确定归并后区间的新起点
+}
+//3.23列表的归并排序
+template<typename T>//列表归并排序算法，对骑士位置p的n个元素排序
+void List<T>::mergeSort(ListNodePosi(T)& p,int n){//valid（p)&&rank(p+n<=size)
+	if(n<2)return ;//若待排序范围足够小，则直接返回否则
+	int m=n>>1;//以中点为界
+	ListNodePosi(T)q=p;for(int i=0;i<m;i++)q=q->succ;//均分列表
+	mergeSort(p,m);mergeSort(q,n-m);//对前后自列表分别排序
+	merge(p,m,*this,q,n-m);
+}//注意：排序前后，p依然指向归并后区间的新起点
+
+			
+

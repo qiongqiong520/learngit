@@ -1,30 +1,29 @@
  ///
- /// @file    打印沙漏.cc
+ /// @file    1027打印沙漏.cc
  /// @author  lemon(haohb13@gmail.com)
- /// @date    2017-04-04 13:24:55
+ /// @date    2017-07-09 21:27:39
  ///
- 
 #include<stdio.h>
-
-int main(int argc,char* argv[]){
+int main(int argc,char* argv[])
+{
 	int n;
 	char c;
 	while(scanf("%d %c",&n,&c)!=EOF){
- 		if(n==1){
+		if(n==1){
 			printf("%c\n",c);
 			printf("0\n");
 			return 0;
 		}
 		int i=0;
-		int sum = 1,sumtemp =0;
+		int sum=1,sumtemp=0;
 		while(sum<=n){
-			sumtemp =sum;
+			sumtemp=sum;
 			sum+=(2*++i+1)*2;
 		}
 		i--;
 		for(int j=i;j>=0;j--)
 		{
-	 		for(int k=0;k<i-j;k++)printf(" ");
+			for(int k=0;k<i-j;k++)printf(" ");
 			for(int k=0;k<2*j+1;k++)printf("%c",c);
 			printf("\n");
 		}
@@ -38,3 +37,4 @@ int main(int argc,char* argv[]){
 	}
 	return 0;
 }
+
