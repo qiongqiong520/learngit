@@ -44,14 +44,14 @@ int main(){
 	}
 	if(cnt==0){//没有修改判断是否需要修改
 	 	 if(n==1){
-			printf("There is %d account and no account is modified",n);
+	 		printf("There is %d account and no account is modified",n);
 		}else{//注意修改account对但复数形式使用
-				printf("There  are %d account and no account modified",n);
-				}
+				printf("There  are %d accounts and no account is modified",n);
+	 			}
 	}else {
 	 	//有password对需要修改
 		for(int i=0;i<n;i++){
-			//如果T[i]的password需要修改,则输出name和password
+	 		//如果T[i]的password需要修改,则输出name和password
 			if(T[i].ischange){
 				printf("%s %s\n",T[i].name,T[i].password);
 			}

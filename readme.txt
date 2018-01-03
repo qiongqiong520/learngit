@@ -3,6 +3,7 @@ git is free software.
 
 git is a free sofeware distrubuted control system.
 git is free software distribuetd under the gpl.`:x
+<<<<<<< HEAD
 
 mac
 Mac自带的本地服务器的使用
@@ -40,3 +41,6 @@ http://www.jianshu.com/p/90d5fa728861
 
 
 
+=======
+creating a new branch is quick & simple.
+>>>>>>> master
